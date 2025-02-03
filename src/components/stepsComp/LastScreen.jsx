@@ -1,13 +1,26 @@
 import React from 'react';
 import { useStep } from '../../context/StepContext';
+import { useDetails } from '../../context/WorkDetails';
+import { calculateWorkHours } from '../calculate/calculateWorkHours';
 
 const Home = () => {
     const { nextStep, prevStep } = useStep();
+    const { setComment, startTime, endTime } = useDetails();
+    
+    const calculateWorkTime = (startTime, endTime) =>  {
+        const time =  calculateWorkHours(startTime, endTime);
+        if (time === 1) {
+            return 'שעה אחת';
+        } else if(time === 2) {
+            return 'שעתיים';
+        } else {
+            return `${time} שעות`;   
+        }
+    } 
 
     return (
-
         <div>
-            <div class="table_component" role="region" tabindex="0">
+            <div>
                 <table>
                     <thead>
                         <tr>
@@ -15,17 +28,22 @@ const Home = () => {
                             <th>שעת סיום</th>
                         </tr>
                         <tr>
-                            <td>08:00</td>
-                            <td>14:00</td>
+                            <td>{startTime}</td>
+                            <td>{endTime}</td>
                         </tr>
                     </thead>
-                    <tbody></tbody>
                 </table>
             </div>
+            <div>
+                <h2>אז להיום סה"כ:</h2>
+                <p>{calculateWorkTime}</p>
+            </div>
+
+            <hr />
             <form action="">
                 
                 <label htmlFor="">אם יש הערות, זה הזמן</label>
-                <input type="text" />
+                <input type="text" onChange={setComment} />
             </form>
 
             <button onClick={() => nextStep()}>יאללה כמה יצא היום?</button>
