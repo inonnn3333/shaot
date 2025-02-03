@@ -11,11 +11,9 @@ export const StepProvider = ({ children }) => {
     // חזרה לשלב הקודם
     const prevStep = () => setStep((prev) => (prev > 1 ? prev - 1 : 1));
 
-    // איפוס השלבים
-    const resetSteps = () => setStep(1);
 
     return (
-        <StepContext.Provider value={{ step, nextStep, prevStep, resetSteps }}>
+        <StepContext.Provider value={{ step, nextStep, prevStep }}>
         {children}
         </StepContext.Provider>
     );

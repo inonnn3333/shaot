@@ -1,9 +1,12 @@
 import './App.css';
-import Home from './components/home';
+import Home from './components/Home';
+import { StepProvider } from './context/StepContext';
 function App() {
   return (
     <div>
-      <Home/>
+      <StepProvider>
+        <Home/>
+      </StepProvider>
     </div>
   );
 }

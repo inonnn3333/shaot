@@ -7,7 +7,7 @@ const Home = () => {
 
         <div>
             <form action="">
-                <label htmlFor="">הערות?</label>
+                <label htmlFor="">אם יש הערות, זה הזמן</label>
                 <input type="text" />
             </form>
 
