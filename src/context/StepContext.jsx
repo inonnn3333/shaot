@@ -9,7 +9,7 @@ export const StepProvider = ({ children }) => {
     const nextStep = () => setStep((prev) => prev + 1);
 
     // חזרה לשלב הקודם
-    const prevStep = () => setStep((prev) => (prev > 1 ? prev - 1 : 1));
+    const prevStep = () => setStep((prev) => prev - 1);
 
 
     return (

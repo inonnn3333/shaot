@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useStep } from '../../context/StepContext';
+
 
 const Home = () => {
-    const [step, setStep] = useState(1);
+    const { nextStep, prevStep } = useStep();
 
     return (
 
@@ -9,8 +11,8 @@ const Home = () => {
             <h2>אז מתי סיימנו היום?</h2>
             <input type="time" />
 
-            <button>חזרה</button>
-            <button onClick={() => setStep(3)}>הבא</button>
+            <button onClick={() => nextStep()}>הבא</button>
+            <button onClick={() => prevStep()}>חזור</button>
 
 
         </div>

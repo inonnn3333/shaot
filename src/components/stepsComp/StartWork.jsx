@@ -12,7 +12,7 @@ const Home = () => {
             <input type="time" />
 
             <button
-                onClick={() => nextStep(2)}
+                onClick={() => nextStep()}
                 // disabled={step===1}
                 >הבא
             </button>
