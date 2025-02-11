@@ -6,10 +6,6 @@ export const calculateWorkHours = (startTime, endTime) => {
 
     // חישוב ההפרש במילישניות -> המרה לשעות
     const diffMs = end - start;
-    console.log(diffMs);
-    
-    const hoursWorked = diffMs / (1000 * 60 * 60); // ממירים לשעות
-    console.log(hoursWorked);
-    
-    return hoursWorked; // תיקון אם חצה חצות
+    const hoursWorked = diffMs / (1000 * 60 * 60); // ממירים לשעות    
+    return hoursWorked; 
 };

@@ -9,7 +9,7 @@ export const WorkDetailsProvider = ({ children }) => {
 
     return (
         <WorkDetails.Provider value={{ setStartTime, setEndTime, setComment, startTime, endTime, comment }}>
-        {children}
+            {children}
         </WorkDetails.Provider>
     );
 };

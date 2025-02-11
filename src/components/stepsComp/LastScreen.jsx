@@ -9,13 +9,12 @@ const Home = () => {
     
     const calculateWorkTime = (startTime, endTime) =>  {
         const time =  calculateWorkHours(startTime, endTime);
-        if (time === 1) {
-            return 'שעה אחת';
-        } else if(time === 2) {
-            return 'שעתיים';
-        } else {
-            return `${time} שעות`;   
-        }
+        // if (time === 1) {
+        //     return 'שעה אחת';
+        // } else if(time === 2) {
+        //     return 'שעתיים';
+        // } 
+        return `${time} שעות`;   
     } 
 
     return (
@@ -41,9 +40,8 @@ const Home = () => {
 
             <hr />
             <form action="">
-                
                 <label htmlFor="">אם יש הערות, זה הזמן</label>
-                <input type="text" onChange={setComment} />
+                <input type="text" onChange={(e)=> setComment(e.target.value)}/>
             </form>
 
             <button onClick={() => nextStep()}>יאללה כמה יצא היום?</button>
