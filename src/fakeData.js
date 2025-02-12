@@ -26,7 +26,7 @@ export const initialData =
         },
         {
             "id": "13$#335",
-            "date": "13/01/2025",
+            "date": "15/01/2025",
             "startWork": "08:00",
             "endWork": "12:30",
             "total": "4.5",
@@ -34,7 +34,7 @@ export const initialData =
         },
         {
             "id": "13$#435",
-            "date": "13/01/2025",
+            "date": "16/01/2025",
             "startWork": "08:00",
             "endWork": "12:30",
             "total": "4.5",
