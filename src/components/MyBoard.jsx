@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {initialData} from '../fakeData.js';
+import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
+
 
 const MyBoard = () => {
     const [data, setData] = useState();
@@ -10,6 +12,14 @@ const MyBoard = () => {
     return (
 
         <div>
+            <div>
+                <h3>סך שעות החודש:
+                    {calculateWorkingHours()}
+                </h3>
+                <h3>סך כסף החודש:
+                    {calculateMoney()}
+                </h3>
+            </div>
             {data ? (
                 <table>
                     <thead>
@@ -18,6 +28,7 @@ const MyBoard = () => {
                             <th>תאריך</th>
                             <th>התחלה</th>
                             <th>סיום</th>
+                            <th>סה"כ שעות</th>
                             <th>הערות</th>
                         </tr>
                     </thead>

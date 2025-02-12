@@ -5,7 +5,7 @@ import { calculateWorkHours } from '../calculate/calculateWorkHours';
 
 const Home = () => {
     const { nextStep, prevStep } = useStep();
-    const { setComment, startTime, endTime } = useDetails();
+    const { setStartTime, setEndTime, setComment, startTime, endTime } = useDetails();
     
     const calculateWorkTime = (startTime, endTime) =>  {
         const time =  calculateWorkHours(startTime, endTime);
@@ -28,8 +28,16 @@ const Home = () => {
                             <th>שעת סיום</th>
                         </tr>
                         <tr>
-                            <td>{startTime}</td>
-                            <td>{endTime}</td>
+                            <th><input
+                                type="time"
+                                value={startTime}
+                                onChange={(e) => setStartTime(e.target.value)}
+                            /></th>
+                            <th><input 
+                                type="time" 
+                                value={endTime}
+                                onChange={(e) => setEndTime(e.target.value)}
+                            /></th>
                         </tr>
                     </thead>
                 </table>
