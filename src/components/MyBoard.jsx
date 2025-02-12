@@ -14,9 +14,11 @@ const MyBoard = () => {
                 <table>
                     <thead>
                         <tr>
-                            {Object.keys(data[0]).map((key) => (
-                                <th key={key}>{key}</th>
-                            ))}
+                            <th>ID</th>
+                            <th>תאריך</th>
+                            <th>התחלה</th>
+                            <th>סיום</th>
+                            <th>הערות</th>
                         </tr>
                     </thead>
                     <tbody>
