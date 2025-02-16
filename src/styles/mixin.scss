@@ -1,9 +1,9 @@
 $primary-color: #A067EA;
+$primary-color2: #F1E4FF;
 
 @mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
 }

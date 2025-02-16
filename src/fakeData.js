@@ -2,42 +2,79 @@ export const initialData =
     [
         {
             "id": "13$#234",
-            "date": "12/01/2025",
-            "startWork": "08:00",
-            "endWork": "14:30",
-            "total": "6.5",
-            "comment": "שרה לא הרגישה טוב"
+            "date": "02/02/2025",
+            "startWork": "08:15",
+            "endWork": "14:00",
+            "comment": ""
         },
         {
             "id": "13$#235",
-            "date": "13/01/2025",
-            "startWork": "08:00",
-            "endWork": "13:30",
-            "total": "5.5",
+            "date": "03/02/2025",
+            "startWork": "08:30",
+            "endWork": "13:15",
             "comment": ""
         },
         {
             "id": "12$#235",
-            "date": "14/01/2025",
-            "startWork": "08:00",
+            "date": "04/02/2025",
+            "startWork": "08:30",
             "endWork": "14:00",
-            "total": "6",
             "comment": ""
         },
         {
             "id": "13$#335",
-            "date": "15/01/2025",
-            "startWork": "08:00",
-            "endWork": "12:30",
-            "total": "4.5",
-            "comment": "יצאתי מוקדם, חתונה ליהודית גימאני"
+            "date": "05/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": ""
         },
         {
             "id": "13$#435",
-            "date": "16/01/2025",
-            "startWork": "08:00",
-            "endWork": "12:30",
-            "total": "4.5",
+            "date": "06/02/2025",
+            "startWork": "08:10",
+            "endWork": "13:10",
             "comment": ""
-        }
+        },
+        {
+            "id": "13$#2235",
+            "date": "09/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        {
+            "id": "23$#2235",
+            "date": "10/02/2025",
+            "startWork": "08:15",
+            "endWork": "13:15",
+            "comment": ""
+        },
+        {
+            "id": "21$#2235",
+            "date": "11/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        {
+            "id": "22$#2235",
+            "date": "12/02/2025",
+            "startWork": "08:30",
+            "endWork": "13:30",
+            "comment": "יצאה מוקדם, טו בשבט"
+        },
+        {
+            "id": "20$#2235",
+            "date": "13/02/2025",
+            "startWork": "08:15",
+            "endWork": "13:15",
+            "comment": ""
+        },{
+            "id": "03$#2235",
+            "date": "16/02/2025",
+            "startWork": "08:15",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        
     ]

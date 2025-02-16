@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import {initialData} from '../fakeData.js';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
+import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 
 
 const MyBoard = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
 
+    const cutDate =(aDate) => {
+        const newCutDate = aDate.slice(0, -5);
+        return newCutDate;
+    }
     useEffect(() =>{
         setData(initialData);
     },[])
     return (
 
-        <div>
+        <div className='myBoard-container'>
             <div>
                 <h3>סך שעות החודש:
                     {calculateWorkingHours()}
@@ -20,31 +25,22 @@ const MyBoard = () => {
                     {calculateMoney()}
                 </h3>
             </div>
-            {data ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>תאריך</th>
-                            <th>התחלה</th>
-                            <th>סיום</th>
-                            <th>סה"כ שעות</th>
-                            <th>הערות</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((item, index) => (
-                            <tr key={index}>
-                                {Object.values(item).map((value, i) => (
-                                    <td key={i}>{value}</td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <div>טוען נתונים..</div>
-            )}
+
+
+                {data.map((d, i)=> (
+                    <div className='myBoard-work-details' key={i}>
+                        <div className='myBoard-work-details-date'>{cutDate(d.date)}</div>
+                        <div className='myBoard-work-details-inner'>
+                            <div>
+                                <p>{d.startWork}</p>
+                                <p>{d.endWork}</p>
+                            </div>
+                            <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
+                            <div className='edit-div'><img src="images/edit-icon.png" alt="edit-icon" /></div>
+                        </div>
+                    </div>
+                    
+                ))}
         </div>
     )
 }

@@ -2,7 +2,8 @@ import { initialData } from "../../fakeData.js";
 
 const calculateWorkingHours = () => {
     let totalHours = 0;
-
+    console.log(initialData);
+    
     initialData.forEach((item) => {
         totalHours += parseInt(item.total);
     });

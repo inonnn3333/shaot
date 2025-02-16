@@ -1,0 +1,46 @@
+@import './mixin.scss';
+
+.myBoard-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 1em 0.4em;
+
+    @include flex-center;
+
+    .myBoard-work-details {
+        width: 95%;
+        @include flex-center;
+        flex-direction: row;
+        gap: 1em;
+
+        .myBoard-work-details-date {
+            font-size: 1.5rem;
+        }
+
+        .myBoard-work-details-inner {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+            // gap: 1em;
+            // border: solid 1px black;
+            border-radius: 20px;
+            padding: 1em 0.4em;
+            background-color: $primary-color2;
+        }
+    }
+
+    .edit-div {
+        // display: none;
+
+        img {
+            width: 2em;
+        }
+    }
+
+    .edit-div:hover {
+        display: inline;
+    }
+}
