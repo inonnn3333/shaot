@@ -1,11 +1,13 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useStep } from '../../context/StepContext';
 import { useDetails } from '../../context/WorkDetails';
 import { calculateWorkHours } from '../calculate/calculateWorkHours';
+import { motion } from 'framer-motion';
 
 const Home = () => {
     const { nextStep, prevStep } = useStep();
     const { setStartTime, setEndTime, setComment, startTime, endTime } = useDetails();
+    const [openDetailes, setOpenDetailes] = useState(false);
     
     const calculateWorkTime = (startTime, endTime) =>  {
         const time =  calculateWorkHours(startTime, endTime);
@@ -19,43 +21,60 @@ const Home = () => {
     } 
 
     return (
-        <div>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>שעת התחלה</th>
-                            <th>שעת סיום</th>
-                        </tr>
-                        <tr>
-                            <th><input
-                                type="time"
-                                value={startTime}
-                                onChange={(e) => setStartTime(e.target.value)}
-                            /></th>
-                            <th><input 
-                                type="time" 
-                                value={endTime}
-                                onChange={(e) => setEndTime(e.target.value)}
-                            /></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+        <div className="lastScreen-container">
             <div>
                 <h2>אז להיום סה"כ:
                     {calculateWorkTime(startTime, endTime)}
                 </h2>
             </div>
 
-            <hr />
+
+                <motion.div
+                className={`details-container ${openDetailes ? 'open' : 'closed'}`}
+                initial={false}
+                animate={openDetailes ? "open" : "closed"}
+                transition={{ duration: 0.5, ease: "easeInOut" }}>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>שעת התחלה</th>
+                                <th>שעת סיום</th>
+                            </tr>
+                            <tr>
+                                <th><input
+                                    type="time"
+                                    value={startTime}
+                                    onChange={(e) => setStartTime(e.target.value)}
+                                /></th>
+                                <th><input 
+                                    type="time" 
+                                    value={endTime}
+                                    onChange={(e) => setEndTime(e.target.value)}
+                                /></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                </motion.div>
+            
+
+            <button className='details-button' onClick={() => setOpenDetailes(!openDetailes)}>
+                {!openDetailes ? 
+                    <img src="images/arrow-details-down.png" alt="arrow-details-down" />
+                    :
+                    <img src="images/arrow-details-up.png" alt="arrow-details-up" />                
+                }
+            </button>
             <form action="">
                 <label htmlFor="">אם יש הערות, זה הזמן</label>
                 <input type="text" onChange={(e)=> setComment(e.target.value)}/>
             </form>
 
-            <button onClick={() => nextStep()}>יאללה זהו</button>
-            <button onClick={() => prevStep()}>חזור</button>
+            <div className='lastScreen-buttons'>
+                <button onClick={() => prevStep()}>חזור</button>
+                <button onClick={() => nextStep()}>יאללה זהו</button>
+            </div>
         </div>
     )
 }
