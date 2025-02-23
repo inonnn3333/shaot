@@ -1,0 +1,12 @@
+@import './mixin.scss';
+
+.edititem-container {
+    @include flex-center;
+    position: absolute;
+    width: 95%;
+    height: 20em;
+    top: 0;
+    left: 0;
+    background-color: #c17070;
+    border-radius: 20px;
+}

@@ -5,6 +5,7 @@
     background-color: #ffffff;
     border-radius: 20px;
     padding: 1em 0.4em;
+    gap: 0.2em;
 
     @include flex-center;
 
@@ -20,27 +21,36 @@
 
         .myBoard-work-details-inner {
             width: 100%;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-direction: row;
-            // gap: 1em;
-            // border: solid 1px black;
             border-radius: 20px;
             padding: 1em 0.4em;
             background-color: $primary-color2;
         }
-    }
 
-    .edit-div {
-        // display: none;
-
-        img {
-            width: 2em;
+        &:hover {
+            .edit-div {
+                display: inline;
+            }
         }
     }
 
-    .edit-div:hover {
-        display: inline;
+    .edit-div {
+        display: none;
+
+        .edit-button {
+            all: unset;
+
+            img {
+                width: 2em;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }

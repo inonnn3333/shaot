@@ -69,10 +69,25 @@ export const initialData =
             "startWork": "08:15",
             "endWork": "13:15",
             "comment": ""
-        },{
+        },
+        {
             "id": "03$#2235",
             "date": "16/02/2025",
             "startWork": "08:15",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        {
+            "id": "03$#22!5",
+            "date": "17/02/2025",
+            "startWork": "08:15",
+            "endWork": "13:15",
+            "comment": ""
+        },
+        {
+            "id": "03$#2!25",
+            "date": "18/02/2025",
+            "startWork": "08:20",
             "endWork": "14:00",
             "comment": ""
         },
