@@ -3,10 +3,10 @@ import React from "react";
 const EditItem = ({ item, onClose }) => {
 
     return (
-        <div className="edititem-container">
+        <div className="editItem-container">
             <button onClick={onClose}>X</button>
             
-            <div>לערוך את ה: {item.date}</div>
+            <div>{item.date}</div>
 
             <div>
                 <form action="">

@@ -91,5 +91,33 @@ export const initialData =
             "endWork": "14:00",
             "comment": ""
         },
+        {
+            "id": "03**#2!25",
+            "date": "19/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        {
+            "id": "0**3#2!25",
+            "date": "20/02/2025",
+            "startWork": "08:30",
+            "endWork": "13:15",
+            "comment": ""
+        },
+        {
+            "id": "03$#**25",
+            "date": "23/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": ""
+        },
+        {
+            "id": "03$#2*!",
+            "date": "24/02/2025",
+            "startWork": "08:30",
+            "endWork": "14:00",
+            "comment": "ישיבת צוות, נורה שמן בבוקר"
+        },
         
     ]

@@ -5,6 +5,15 @@
     height: 100vh;
     background-color: $primary-color;
     @include flex-center;
+
+    .details-button {
+        all: unset;
+        margin-bottom: 1em;
+
+        img {
+            width: 1em;
+        }
+    }
 }
 
 .startWork-container,

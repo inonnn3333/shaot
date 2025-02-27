@@ -1,8 +1,8 @@
 @import './mixin.scss';
 
-.edititem-container {
+.editItem-container {
     @include flex-center;
-    position: absolute;
+    position: relative;
     width: 95%;
     height: 20em;
     top: 0;

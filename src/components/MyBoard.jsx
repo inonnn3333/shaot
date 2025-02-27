@@ -13,6 +13,13 @@ const MyBoard = () => {
         const newCutDate = aDate.slice(0, -5);
         return newCutDate;
     }
+
+    const formatNumber = (num) => {
+    if (num >= 1000 && num < 10000) {
+        return num.toLocaleString(); // מוסיף פסיק לאלפים
+    }
+    return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
+}
     useEffect(() =>{
         setData(initialData);
     },[])
@@ -23,7 +30,7 @@ const MyBoard = () => {
                     {calculateWorkingHours()}
                 </h3>
                 <h3>סך כסף החודש:
-                    {calculateMoney()}
+                    {formatNumber(calculateMoney())}
                 </h3>
             </div>
 
@@ -35,11 +42,6 @@ const MyBoard = () => {
                             <p>{d.startWork}</p>
                             <p>{d.endWork}</p>
                         </div>
-                        {d.comment && 
-                            <div>
-                                <p>{d.comment}</p>
-                            </div>
-                        }
                         <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
                         <div className='edit-div'>
                             <button className='edit-button' onClick={() => setEditingItem(d)}>
@@ -47,6 +49,11 @@ const MyBoard = () => {
                             </button>
                         </div>
                     </div>
+                    {d.comment && 
+                        <div>
+                            <p>{d.comment}</p>
+                        </div>
+                    }
                 </div>
             ))}
 
