@@ -7,14 +7,14 @@ const StartWork = () => {
     const { nextStep } = useStep();
     const { setStartTime, startTime } = useDetails();
     
-    const currentTime = new Date().toLocaleTimeString('en-IL', {hour: '2-digit', minute:'2-digit'});
+    // const currentTime = new Date().toLocaleTimeString('en-IL', {hour: '2-digit', minute:'2-digit'});
 
     return (
 
         <div className="startWork-container">
             <p>היי בייב,</p>
             <h2>מתי התחלת היום?</h2>
-            <input type="time" value={currentTime} onChange={(e)=> {setStartTime(e.target.value)}}/>
+            <input type="time"  onChange={(e)=> {setStartTime(e.target.value)}}/>
 
             <button
                 onClick={() => nextStep()}

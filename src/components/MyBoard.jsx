@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import {initialData} from '../fakeData.js';
+import React, { useState } from 'react';
+// import axios from 'axios';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
 import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 import EditItem from './EditItem.jsx';
 
-
+import useWorkDays from '../hooks/useWorkDays.js';
 const MyBoard = () => {
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
+    const { data, loading, error } = useWorkDays();
     const [editingItem, setEditingItem] = useState(null);
 
     const cutDate =(aDate) => {
@@ -20,9 +21,23 @@ const MyBoard = () => {
     }
     return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
 }
-    useEffect(() =>{
-        setData(initialData);
-    },[])
+    // useEffect(() =>{
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get("http://localhost:5555/all-data");
+    //             setData(response.data);
+    //         } catch (err) {
+    //             console.log(err);
+    //             setData(err.message)
+                
+    //         }
+    //     }
+    //     fetchData()
+    // },[])
+
+    if (loading) return <p>🔄 טוען נתונים...</p>;
+    if (error) return <p>❌ שגיאה בטעינת הנתונים: {error}</p>;
+    if (!data.length) return <p>⚠ אין נתונים זמינים</p>;
     return (
         <div className='myBoard-container'>
             <div>
