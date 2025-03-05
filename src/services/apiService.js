@@ -9,14 +9,17 @@ const api = axios.create({
 
 const getAllWorkDays = async () => {
     const response = await api.get('/all-data');
-    console.log("יש דאטה");
     
     return response.data;
+}
 
+const addWorkDay = async (workDay) => {
+    await api.post('/add-data', workDay);
 }
 
 const apiService = {
-    getAllWorkDays
+    getAllWorkDays,
+    addWorkDay
 };
 
 export default apiService; 

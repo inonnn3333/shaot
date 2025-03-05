@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
 import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 import EditItem from './EditItem.jsx';
 
 import useWorkDays from '../hooks/useWorkDays.js';
 const MyBoard = () => {
-    // const [data, setData] = useState([]);
     const { data, loading, error } = useWorkDays();
     const [editingItem, setEditingItem] = useState(null);
 
@@ -16,24 +14,11 @@ const MyBoard = () => {
     }
 
     const formatNumber = (num) => {
-    if (num >= 1000 && num < 10000) {
-        return num.toLocaleString(); // מוסיף פסיק לאלפים
+        if (num >= 1000 && num < 10000) {
+            return num.toLocaleString(); // מוסיף פסיק לאלפים
+        }
+        return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
     }
-    return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
-}
-    // useEffect(() =>{
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await axios.get("http://localhost:5555/all-data");
-    //             setData(response.data);
-    //         } catch (err) {
-    //             console.log(err);
-    //             setData(err.message)
-                
-    //         }
-    //     }
-    //     fetchData()
-    // },[])
 
     if (loading) return <p>🔄 טוען נתונים...</p>;
     if (error) return <p>❌ שגיאה בטעינת הנתונים: {error}</p>;

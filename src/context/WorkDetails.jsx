@@ -3,12 +3,12 @@ import { createContext, useContext, useState } from "react";
 const WorkDetails = createContext();
 
 export const WorkDetailsProvider = ({ children }) => {
-    const [startTime, setStartTime] = useState('');
-    const [endTime, setEndTime] = useState('');
+    const [startWork, setStartWork] = useState('');
+    const [endWork, setEndWork] = useState('');
     const [comment, setComment] = useState('');
 
     return (
-        <WorkDetails.Provider value={{ setStartTime, setEndTime, setComment, startTime, endTime, comment }}>
+        <WorkDetails.Provider value={{ setStartWork, setEndWork, setComment, startWork, endWork, comment }}>
             {children}
         </WorkDetails.Provider>
     );

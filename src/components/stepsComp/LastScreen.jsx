@@ -4,9 +4,12 @@ import { useDetails } from '../../context/WorkDetails';
 import { calculateWorkHours } from '../calculate/calculateWorkHours';
 import { motion } from 'framer-motion';
 
-const Home = () => {
+import apiService from "../../services/apiService.js";
+
+
+const LastScreen = () => {
     const { nextStep, prevStep } = useStep();
-    const { setStartTime, setEndTime, setComment, startTime, endTime } = useDetails();
+    const { setStartWork, setEndWork, setComment, startWork, endWork, comment } = useDetails();
     const [openDetailes, setOpenDetailes] = useState(false);
     
     const calculateWorkTime = (startTime, endTime) =>  {
@@ -16,15 +19,25 @@ const Home = () => {
         } else if(time === 2) {
             return 'שעתיים';
         } 
-        
         return `${time} שעות`;   
     } 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const workDay = {
+            date: '',
+            startWork,
+            endWork,
+            comment
+        }
+        apiService.addWorkDay(workDay);
+    }
 
     return (
         <div className="lastScreen-container">
             <div>
                 <h2>אז להיום סה"כ:
-                    {calculateWorkTime(startTime, endTime)}
+                    {calculateWorkTime(startWork, endWork)}
                 </h2>
             </div>
 
@@ -44,13 +57,13 @@ const Home = () => {
                             <tr>
                                 <th><input
                                     type="time"
-                                    value={startTime}
-                                    onChange={(e) => setStartTime(e.target.value)}
+                                    value={startWork}
+                                    onChange={(e) => setStartWork(e.target.value)}
                                 /></th>
                                 <th><input 
                                     type="time" 
-                                    value={endTime}
-                                    onChange={(e) => setEndTime(e.target.value)}
+                                    value={endWork}
+                                    onChange={(e) => setEndWork(e.target.value)}
                                 /></th>
                             </tr>
                         </thead>
@@ -73,10 +86,10 @@ const Home = () => {
 
             <div className='lastScreen-buttons'>
                 <button onClick={() => prevStep()}>חזור</button>
-                <button onClick={() => nextStep()}>יאללה זהו</button>
+                <button onClick={(e) => handleSubmit(e)}>יאללה זהו</button>
             </div>
         </div>
     )
 }
 
-export default Home;
+export default LastScreen;

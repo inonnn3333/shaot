@@ -5,7 +5,7 @@ import { useDetails } from '../../context/WorkDetails';
 
 const Home = () => {
     const { nextStep, prevStep } = useStep();
-    const { setEndTime, endTime } = useDetails();
+    const { setEndWork, endWork } = useDetails();
 
     // const currentTime = new Date().toLocaleTimeString('en-IL', {hour: '2-digit', minute:'2-digit'});
 
@@ -14,9 +14,9 @@ const Home = () => {
 
         <div className="endWork-container">
             <h2>אז מתי סיימנו היום?</h2>
-            <input type="time" onChange={(e) => {setEndTime(e.target.value)}}/>
+            <input type="time" onChange={(e) => {setEndWork(e.target.value)}}/>
 
-            <button onClick={() => nextStep()} disabled={!endTime}>הבא</button>
+            <button onClick={() => nextStep()} disabled={!endWork}>הבא</button>
             <button onClick={() => prevStep()}>חזור</button>
         </div>
     )

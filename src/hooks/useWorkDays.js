@@ -20,7 +20,15 @@ const useWorkDays = () => {
         fetchData();
     },[])
 
-    return {data, loading, error}
+    const addWorkDay = async (workDay) => {
+        try {
+            await apiService.addWorkDay(workDay);
+            setData([...data, workDay]);
+        } catch (err) {
+            setError(err.message)
+        }
+    }
+    return {data, loading, error, addWorkDay}
 }
 
 export default useWorkDays;

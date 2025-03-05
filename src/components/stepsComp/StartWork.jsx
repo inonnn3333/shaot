@@ -5,7 +5,7 @@ import { useDetails } from '../../context/WorkDetails';
 
 const StartWork = () => {
     const { nextStep } = useStep();
-    const { setStartTime, startTime } = useDetails();
+    const { setStartWork, startWork } = useDetails();
     
     // const currentTime = new Date().toLocaleTimeString('en-IL', {hour: '2-digit', minute:'2-digit'});
 
@@ -14,11 +14,11 @@ const StartWork = () => {
         <div className="startWork-container">
             <p>היי בייב,</p>
             <h2>מתי התחלת היום?</h2>
-            <input type="time"  onChange={(e)=> {setStartTime(e.target.value)}}/>
+            <input type="time"  onChange={(e)=> {setStartWork(e.target.value)}}/>
 
             <button
-                onClick={() => nextStep()}
-                disabled={!startTime}
+                onClick={() => {nextStep()}}
+                disabled={!startWork}
                 >
                     <img src="images/arrow.png" alt="" />
             </button>
