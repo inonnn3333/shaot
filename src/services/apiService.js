@@ -17,9 +17,14 @@ const addWorkDay = async (workDay) => {
     await api.post('/add-data', workDay);
 }
 
+const EditWorkDay = async (workDay) => {
+    await api.put(`/edit-data/${workDay.date}`, workDay);
+}
+
 const apiService = {
     getAllWorkDays,
-    addWorkDay
+    addWorkDay,
+    EditWorkDay
 };
 
 export default apiService; 

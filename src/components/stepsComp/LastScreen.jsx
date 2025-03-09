@@ -8,7 +8,7 @@ import apiService from "../../services/apiService.js";
 
 
 const LastScreen = () => {
-    const { nextStep, prevStep } = useStep();
+    const { prevStep } = useStep();
     const { setStartWork, setEndWork, setComment, startWork, endWork, comment } = useDetails();
     const [openDetailes, setOpenDetailes] = useState(false);
     

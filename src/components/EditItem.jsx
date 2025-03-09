@@ -1,6 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import apiService from "../services/apiService.js";
 
 const EditItem = ({ item, onClose }) => {
+
+    const [ startWorkEdit, setStartWorkEdit ] = useState(item.startWork);
+    const [ endWorkEdit, setEndWorkEdit ] = useState(item.endWork);
+    const [ commentEdit, setCommentEdit ] = useState(item.comment);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const workDay = {
+            date: item.date,
+            startWork: startWorkEdit,
+            endWork: endWorkEdit,
+            comment: commentEdit
+        }
+        apiService.EditWorkDay(workDay);
+    }
 
     return (
         <div className="editItem-container">
@@ -12,19 +28,18 @@ const EditItem = ({ item, onClose }) => {
                 <form action="">
                     <div>
                         <label htmlFor="">התחלה</label>
-                        <input type="time" name="" id="" value={item.startWork} />
+                        <input type="time" name="" id="" value={startWorkEdit} onChange={(e) => {setStartWorkEdit(e.target.value)}} />
                     </div>
                     <div>
                         <label htmlFor="">סיום</label>
-                        <input type="time" name="" id="" value={item.endWork} />
+                        <input type="time" name="" id="" value={endWorkEdit} onChange={(e) => {setEndWorkEdit(e.target.value)}}/>
                     </div>
                     <div>
                         <label htmlFor="">הערות</label>
-                        <input type="text" name="" id="" value={
-                            item.endWork && item.comment} />
+                        <input type="text" name="" id="" value={commentEdit && commentEdit} onChange={(e) => {setCommentEdit(e.target.value)}}/>
                     </div>
                     <div>
-                        <button>סיימתי</button>
+                        <button onClick={handleSubmit}>סיימתי</button>
                     </div>
                 </form>
 

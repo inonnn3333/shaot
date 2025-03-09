@@ -20,6 +20,7 @@ const MyBoard = () => {
         return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
     }
 
+    
     if (loading) return <p>🔄 טוען נתונים...</p>;
     if (error) return <p>❌ שגיאה בטעינת הנתונים: {error}</p>;
     if (!data.length) return <p>⚠ אין נתונים זמינים</p>;
