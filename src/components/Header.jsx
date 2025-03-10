@@ -1,15 +1,24 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     return (
         <div className='header-container'>
-            {/* בלחיצה על הכפתור לפתוח את הרכיב my-board */}
-            <button onClick={() =>{navigate('/my-board')}}>
+            {location.pathname === '/my-board'
+            ? 
+            (<button onClick={() =>{navigate('/')}} 
+                style={{ backgroundColor: location.pathname === '/my-board' ? '#A067EA' : '#ffffff60' }}>
+                <img src="images/home-icon.png" alt="arrow-details-up" />
+            </button>
+            ):
+            (<button onClick={() =>{navigate('/my-board')}} >
                 <img src="images/details-icon.png" alt="arrow-details-up" />
             </button>
-            <button>
+            )}
+
+            <button style={{ backgroundColor: location.pathname === '/my-board' ? '#A067EA' : '#ffffff60' }}>
                 <img src="images/setting-icon.png" alt="arrow-details-up" />
             </button>
         </div>
