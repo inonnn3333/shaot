@@ -5,9 +5,8 @@ const useWorkDays = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null);
-    
-    useEffect(() => {
-        const fetchData = async () => {
+
+    const fetchData = async () => {
             try{
                 const workDays = await apiService.getAllWorkDays();
                 setData(workDays);
@@ -17,8 +16,6 @@ const useWorkDays = () => {
                 setLoading(false);
             }
         }
-        fetchData();
-    },[])
 
     const addWorkDay = async (workDay) => {
         try {
@@ -28,6 +25,11 @@ const useWorkDays = () => {
             setError(err.message)
         }
     }
+
+    useEffect(() => {
+        fetchData();
+    },[])
+
     return {data, loading, error, addWorkDay}
 }
 

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import { StepProvider } from './context/StepContext';
 import { WorkDetailsProvider } from './context/WorkDetails';
-import EditItem from './components/EditItem';
+// import EditItem from './components/EditItem';
 import MyBoard from './components/MyBoard';
 import Header from './components/Header';
 
@@ -18,7 +18,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home/>}></Route>
               <Route path='/my-board' element={<MyBoard/>}></Route>
-              <Route path='/edit-item/:id' element={<EditItem/>}></Route>
+              {/* <Route path='/edit-item/:id' element={<EditItem/>}></Route> */}
             </Routes>
           </Router>
         </WorkDetailsProvider>

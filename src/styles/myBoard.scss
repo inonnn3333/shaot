@@ -4,9 +4,32 @@
     width: 100%;
     background-color: #ffffff;
     border-radius: 20px;
-    padding: 3em 0.4em 1em 0.4em;
+    padding: 4em 0.4em 1em 0.4em;
     gap: 0.3em;
     @include flex-center;
+
+    .myBoard-header {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #d3d2d2;
+        padding: 0.5em;
+        border-radius: 10px;
+
+        button {
+            width: 2em;
+            height: 2em;
+            border: none;
+            border-radius: 50px;
+            @include flex-center;
+
+            img {
+                width: 1em;
+            }
+        }
+    }
 
     .myBoard-work-details {
         width: 100%;

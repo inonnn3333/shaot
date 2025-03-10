@@ -7,20 +7,17 @@ const EditItem = ({ item, onClose }) => {
     const [ endWorkEdit, setEndWorkEdit ] = useState(item.endWork);
     const [ commentEdit, setCommentEdit ] = useState(item.comment);
 
+
     const handleSubmit = (e) => {
-        try {
-            e.preventDefault();
-            const workDay = {
-                date: item.date,
-                startWork: startWorkEdit,
-                endWork: endWorkEdit,
-                comment: commentEdit
-            }
-            apiService.EditWorkDay(workDay);
-            onClose();
-        } catch (err) {
-            console.log(err);
+        e.preventDefault();
+        const workDay = {
+            date: item.date,
+            startWork: startWorkEdit,
+            endWork: endWorkEdit,
+            comment: commentEdit
         }
+        apiService.EditWorkDay(workDay);
+        onClose();
     }
 
     return (
