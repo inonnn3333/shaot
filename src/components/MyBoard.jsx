@@ -36,25 +36,22 @@ const MyBoard = () => {
             </div>
 
             {data.map((d, i)=> (
-                <div className='myBoard-work-details' key={i}>
+                <div className='myBoard-work-details' key={i} onClick={() => setEditingItem(d)} >
                     <div className='myBoard-work-details-date'>{cutDate(d.date)}</div>
-                    <div className='myBoard-work-details-inner'>
-                        <div>
-                            <p>{d.startWork}</p>
-                            <p>{d.endWork}</p>
+                    <div className='myBoard-work-details-content'>
+                        <div className='myBoard-work-details-inner'>
+                            <div>
+                                <p>{d.startWork}</p>
+                                <p>{d.endWork}</p>
+                            </div>
+                            <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
                         </div>
-                        <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
-                        <div className='edit-div'>
-                            <button className='edit-button' onClick={() => setEditingItem(d)}>
-                                <img src="images/edit-icon.png" alt="edit-icon"/>
-                            </button>
-                        </div>
+                        {d.comment && 
+                            <div>
+                                <p>{d.comment}</p>
+                            </div>
+                        }
                     </div>
-                    {d.comment && 
-                        <div>
-                            <p>{d.comment}</p>
-                        </div>
-                    }
                 </div>
             ))}
 

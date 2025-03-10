@@ -5,6 +5,7 @@ import { StepProvider } from './context/StepContext';
 import { WorkDetailsProvider } from './context/WorkDetails';
 import EditItem from './components/EditItem';
 import MyBoard from './components/MyBoard';
+import Header from './components/Header';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <StepProvider>
         <WorkDetailsProvider>
           <Router>
+              <Header/>
             <Routes>
               <Route path='/' element={<Home/>}></Route>
               <Route path='/my-board' element={<MyBoard/>}></Route>

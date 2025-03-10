@@ -2,8 +2,9 @@
 
 .myBoard-container {
     width: 100%;
-    margin-top: 35em;
-    // overflow: ac;
+    height: 100%;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
     background-color: #ffffff;
     border-radius: 20px;
     padding: 1em 0.4em;
@@ -12,48 +13,31 @@
     @include flex-center;
 
     .myBoard-work-details {
-        width: 95%;
+        width: 100%;
         @include flex-center;
         flex-direction: row;
-        gap: 1em;
+        gap: 0.5em;
 
         .myBoard-work-details-date {
             width: 20%;
             font-size: 1.2rem;
+            font-weight: bold;
         }
 
-        .myBoard-work-details-inner {
-            width: 100%;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: row;
-            border-radius: 20px;
-            padding: 1em 0.4em;
+        .myBoard-work-details-content {
+            width: 80%;
             background-color: $primary-color2;
-        }
+            border-radius: 20px;
+            @include flex-center;
+            padding: 1em 0.4em;
 
-        &:hover {
-            .edit-div {
-                display: inline;
+            .myBoard-work-details-inner {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
             }
-        }
-    }
-
-    .edit-div {
-        display: none;
-
-        .edit-button {
-            all: unset;
-
-            img {
-                width: 2em;
-            }
-        }
-
-        &:hover {
-            cursor: pointer;
         }
     }
 }
