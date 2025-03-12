@@ -11,12 +11,14 @@
     .myBoard-header {
         width: 80%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: space-between;
         background-color: #d3d2d2;
         padding: 0.5em;
+        margin-bottom: 1em;
         border-radius: 10px;
+        gap: 1em;
 
         button {
             width: 2em;
@@ -27,6 +29,61 @@
 
             img {
                 width: 1em;
+            }
+        }
+
+        .myBoard-header-details {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .myBoard-filter-container {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .filter-form {
+                width: 100%;
+                flex-wrap: wrap;
+                padding: 0.5em;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+
+
+                .filter-div {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .filter-btn-div {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 0.5em;
+
+                    button {
+                        width: 100%;
+                        margin-top: 1em;
+                        border: none;
+                        border-radius: 10px;
+                        background-color: $primary-color;
+                        color: #000000;
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }

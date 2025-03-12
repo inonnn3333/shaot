@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
 import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 import EditItem from './EditItem.jsx';
-import Filter from './Filter.jsx';
 
 import useWorkDays from '../hooks/useWorkDays.js';
 const MyBoard = () => {
     const { data, loading, error } = useWorkDays();
     const [editingItem, setEditingItem] = useState(null);
     const [filterOpen, setFilterOpen] = useState(null);
+    const [ startDate, setStartDate ] = useState(null);
+    const [ endDate, setEndDate ] = useState(null);
 
     const cutDate =(aDate) => {
         const newCutDate = aDate.slice(0, -5);
@@ -28,13 +29,32 @@ const MyBoard = () => {
     return (
         <div className='myBoard-container'>
             <div className='myBoard-header'>
-                <h3>{calculateWorkingHours()} שעות
-                </h3>
-                <h3>{formatNumber(calculateMoney())} ש"ח
-                </h3>
-                <button onClick={() => setFilterOpen(true)}>
-                    <img src="images/filter-icon.png" alt="close-icon" />
-                </button>
+                <div className='myBoard-header-details'>
+                    <h3>{calculateWorkingHours()} שעות</h3>
+                    <h3>{formatNumber(calculateMoney())} ש"ח</h3>
+                    <button onClick={() => setFilterOpen(!filterOpen)}>
+                        <img src="images/filter-icon.png" alt="close-icon" />
+                    </button>
+                </div>
+            
+
+            {filterOpen && (
+                <div className='myBoard-filter-container'>
+                    <form className="filter-form">
+                    <div className="filter-div">
+                        <label htmlFor="">מ:</label>
+                        <input type="date" value={startDate} onChange={(e) => {setStartDate(e.target.value)}} />
+                    </div>
+                    <div className="filter-div">
+                        <label htmlFor="">עד:</label>
+                        <input type="date" value={endDate} onChange={(e) => {setEndDate(e.target.value)}}/>
+                    </div>
+                    <div className="filter-btn-div">
+                        <button>סינון</button>
+                    </div>
+                </form>
+                </div>
+            )}
             </div>
 
             {data.map((d, i)=> (
@@ -61,7 +81,6 @@ const MyBoard = () => {
             ))}
 
             {editingItem && <EditItem item={editingItem} onClose={() => setEditingItem(null)} />}
-                {filterOpen && <Filter item={editingItem} onClose={() => setFilterOpen(false)} />}
         </div>
     )
 }
