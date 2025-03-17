@@ -5,9 +5,14 @@ import { calculateWorkHours } from '../calculate/calculateWorkHours';
 import { motion } from 'framer-motion';
 
 import apiService from "../../services/apiService.js";
+import {convertToISODate} from '../calculate/convertToISODate.js';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const LastScreen = () => {
+    const navigate = useNavigate();
+
     const { prevStep } = useStep();
     const { setStartWork, setEndWork, setComment, startWork, endWork, comment } = useDetails();
     const [openDetailes, setOpenDetailes] = useState(false);
@@ -23,14 +28,20 @@ const LastScreen = () => {
     } 
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        const workDay = {
-            date: '',
-            startWork,
-            endWork,
-            comment
+        try {
+            e.preventDefault();
+            const workDay = JSON.stringify({
+                date: '',
+                startWork: convertToISODate(startWork),
+                endWork: convertToISODate(endWork),
+                comment
+            })
+            apiService.addWorkDay(workDay);
+            console.log("SUCCESS");
+            navigate('/my-board')
+        } catch (err) {
+            console.log(err.message);
         }
-        apiService.addWorkDay(workDay);
     }
 
     return (

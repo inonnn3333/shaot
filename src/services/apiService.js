@@ -14,7 +14,12 @@ const getAllWorkDays = async () => {
 }
 
 const addWorkDay = async (workDay) => {
-    await api.post('/add-data', workDay);
+    try {
+        await api.post('/add-data', workDay);
+    } catch (err) {
+        console.log(err.message);
+        return;
+    }
 }
 
 const EditWorkDay = async (workDay) => {

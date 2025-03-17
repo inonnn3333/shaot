@@ -6,21 +6,26 @@ import { useDetails } from '../../context/WorkDetails';
 const StartWork = () => {
     const { nextStep } = useStep();
     const { setStartWork, startWork } = useDetails();
-    
-    // const currentTime = new Date().toLocaleTimeString('en-IL', {hour: '2-digit', minute:'2-digit'});
+
 
     return (
 
         <div className="startWork-container">
             <p>היי בייב,</p>
             <h2>מתי התחלת היום?</h2>
-            <input type="time"  onChange={(e)=> {setStartWork(e.target.value)}}/>
+            <input
+                type="time"
+                // value={startWork}
+                onChange={(e)=> {setStartWork(e.target.value)}}/>
 
             <button
-                onClick={() => {nextStep()}}
+                onClick={() => {
+                    nextStep();
+                    // saveInLocalStorage('startWork',startWork)
+                }}
                 disabled={!startWork}
                 >
-                    <img src="images/arrow.png" alt="" />
+                    <img src="images/arrow.png" alt="arrow-icon" />
             </button>
 
         </div>
