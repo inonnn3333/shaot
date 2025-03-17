@@ -37,7 +37,7 @@ const LastScreen = () => {
                 comment
             })
             apiService.addWorkDay(workDay);
-            console.log("SUCCESS");
+            
             navigate('/my-board')
         } catch (err) {
             console.log(err.message);

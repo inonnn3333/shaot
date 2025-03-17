@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
 import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 import EditItem from './EditItem.jsx';
-
+import moment from 'moment';
 import useWorkDays from '../hooks/useWorkDays.js';
 const MyBoard = () => {
-    const { data, loading, error } = useWorkDays();
-    const [editingItem, setEditingItem] = useState(null);
-    const [filterOpen, setFilterOpen] = useState(null);
+    const { data } = useWorkDays();
+    const [ editingItem, setEditingItem ] = useState(null);
+    const [ filterOpen, setFilterOpen ] = useState(null);
     const [ startDate, setStartDate ] = useState(null);
     const [ endDate, setEndDate ] = useState(null);
 
     const cutDate =(aDate) => {
-        const newCutDate = aDate.slice(0, -5);
-        return newCutDate;
+        const changeFormatDate = moment(aDate).format('DD/MM');
+        return changeFormatDate;
     }
+
+    const cutHour = (aHour) => {
+        const newCutHour = moment(aHour).format('HH:mm');
+        return newCutHour;
+    }
+
 
     const formatNumber = (num) => {
         if (num >= 1000 && num < 10000) {
@@ -23,9 +29,11 @@ const MyBoard = () => {
         return num.toString(); // מחזיר כפי שהוא אם לא 4 ספרות
     }
 
-    if (loading) return <p>🔄 טוען נתונים...</p>;
-    if (error) return <p>❌ שגיאה בטעינת הנתונים: {error}</p>;
-    if (!data.length) return <p>⚠ אין נתונים זמינים</p>;
+    // if (loading) return <p>🔄 טוען נתונים...</p>;
+    // if (error) return <p>❌ שגיאה בטעינת הנתונים: {error}</p>;
+    // if (!data.length) return <p>⚠ אין נתונים זמינים</p>;
+
+
     return (
         <div className='myBoard-container'>
             <div className='myBoard-header'>
@@ -63,8 +71,8 @@ const MyBoard = () => {
                     <div className='myBoard-work-details-content'>
                         <div className='myBoard-work-details-inner'>
                             <div>
-                                <p>{d.startWork}</p>
-                                <p>{d.endWork}</p>
+                                <p>{cutHour(d.startWork)}</p>
+                                <p>{cutHour(d.endWork)}</p>
                             </div>
                             <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
                             

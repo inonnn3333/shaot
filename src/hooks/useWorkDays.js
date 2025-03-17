@@ -7,15 +7,15 @@ const useWorkDays = () => {
     const [error, setError] = useState(null);
 
     const fetchData = async () => {
-            try{
-                const workDays = await apiService.getAllWorkDays();
-                setData(workDays);
-            } catch (err) {
-                setError(err.message)
-            } finally {
-                setLoading(false);
-            }
+        try{
+            const workDays = await apiService.getAllWorkDays();
+            setData(workDays);
+        } catch (err) {
+            setError(err.message)
+        } finally {
+            setLoading(false);
         }
+    }
 
     const addWorkDay = async (workDay) => {
         try {
