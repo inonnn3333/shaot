@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStep } from '../../context/StepContext';
 import { useDetails } from '../../context/WorkDetails';
-
+import hoursFormatService from '../../services/hoursFormat';
 
 const StartWork = () => {
     const { nextStep } = useStep();
@@ -16,7 +16,7 @@ const StartWork = () => {
             <input
                 type="time"
                 // value={startWork}
-                onChange={(e)=> {setStartWork(e.target.value)}}/>
+                onChange={(e)=> {setStartWork(hoursFormatService.changeHourFormatToFullFormat(e.target.value))}}/>
 
             <button
                 onClick={() => {

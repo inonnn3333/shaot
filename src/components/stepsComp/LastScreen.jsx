@@ -9,7 +9,6 @@ import {convertToISODate} from '../calculate/convertToISODate.js';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const LastScreen = () => {
     const navigate = useNavigate();
 
