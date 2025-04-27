@@ -1,21 +1,28 @@
 import React, {useState} from "react";
 import apiService from "../services/apiService.js";
+import hoursFormatService from '../services/hoursFormat.js';
+import dateFormatService from '../services/dateFormat.js';
+import moment from "moment";
 
 const EditItem = ({ item, onClose }) => {
 
-    const [ startWorkEdit, setStartWorkEdit ] = useState(item.startWork);
-    const [ endWorkEdit, setEndWorkEdit ] = useState(item.endWork);
+    const [ startWorkEdit, setStartWorkEdit ] = useState(hoursFormatService.changeHourFormatToFriendlyFormat(item.startWork));
+    const [ endWorkEdit, setEndWorkEdit ] = useState(hoursFormatService.changeHourFormatToFriendlyFormat(item.endWork));
     const [ commentEdit, setCommentEdit ] = useState(item.comment);
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         const workDay = {
-            date: item.date,
-            startWork: startWorkEdit,
-            endWork: endWorkEdit,
+            date: moment(item.date).format('YYYY-MM-DD'),
+            startWork: hoursFormatService.changeHourFormatToFullFormat(startWorkEdit),
+            endWork: hoursFormatService.changeHourFormatToFullFormat(endWorkEdit),
             comment: commentEdit
         }
+
+        console.log(workDay);
+        
         apiService.EditWorkDay(workDay);
         onClose();
     }
@@ -27,7 +34,7 @@ const EditItem = ({ item, onClose }) => {
                 <button onClick={onClose}>
                     <img src="images/close-icon.png" alt="close-icon" />
                 </button>
-                <div>{item.date}</div>
+                <div>{dateFormatService.changeDateFormatToFriendlyFormatToEditComp(item.date)}</div>
             </div>
             
             <div className="editItem-form">

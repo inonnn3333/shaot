@@ -27,6 +27,8 @@ const LastScreen = () => {
     } 
 
     const handleSubmit = (e) => {
+
+        let a;
         try {
             e.preventDefault();
             const workDay = JSON.stringify({
@@ -35,11 +37,14 @@ const LastScreen = () => {
                 endWork: convertToISODate(endWork),
                 comment
             })
+            a = workDay;
+            // console.log(workDay);
             apiService.addWorkDay(workDay);
             
             navigate('/my-board')
         } catch (err) {
-            console.log(err.message);
+            console.log(a);
+            console.log("the error",err.message);
         }
     }
 

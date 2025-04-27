@@ -3,8 +3,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 const WorkDetails = createContext();
 
 export const WorkDetailsProvider = ({ children }) => {
-    const [startWork, setStartWork] = useState('');
-    const [endWork, setEndWork] = useState('');
+    const [startWork, setStartWork] = useState(null);
+    const [endWork, setEndWork] = useState(null);
     const [comment, setComment] = useState('');
 
     const saveInLocalStorage = (key, workTime) => {

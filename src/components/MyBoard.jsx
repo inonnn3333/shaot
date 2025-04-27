@@ -2,25 +2,17 @@ import React, { useState } from 'react';
 import { calculateMoney, calculateWorkingHours } from './calculate/calculateMonthly.js';
 import { calculateWorkHours } from './calculate/calculateWorkHours.js';
 import EditItem from './EditItem.jsx';
-import moment from 'moment';
 import useWorkDays from '../hooks/useWorkDays.js';
+import hoursFormatService from '../services/hoursFormat.js';
+import dateFormatService from '../services/dateFormat.js';
+
+
 const MyBoard = () => {
     const { data } = useWorkDays();
     const [ editingItem, setEditingItem ] = useState(null);
     const [ filterOpen, setFilterOpen ] = useState(null);
     const [ startDate, setStartDate ] = useState(null);
     const [ endDate, setEndDate ] = useState(null);
-
-    const cutDate =(aDate) => {
-        const changeFormatDate = moment(aDate).format('DD/MM');
-        return changeFormatDate;
-    }
-
-    const cutHour = (aHour) => {
-        const newCutHour = moment(aHour).format('HH:mm');
-        return newCutHour;
-    }
-
 
     const formatNumber = (num) => {
         if (num >= 1000 && num < 10000) {
@@ -67,12 +59,12 @@ const MyBoard = () => {
 
             {data.map((d, i)=> (
                 <div className='myBoard-work-details' key={i} onClick={() => setEditingItem(d)} >
-                    <div className='myBoard-work-details-date'>{cutDate(d.date)}</div>
+                    <div className='myBoard-work-details-date'>{dateFormatService.changeDateFormatToFriendlyFormat(d.date)}</div>
                     <div className='myBoard-work-details-content'>
                         <div className='myBoard-work-details-inner'>
                             <div>
-                                <p>{cutHour(d.startWork)}</p>
-                                <p>{cutHour(d.endWork)}</p>
+                                <p>{hoursFormatService.changeHourFormatToFriendlyFormat(d.startWork)}</p>
+                                <p>{hoursFormatService.changeHourFormatToFriendlyFormat(d.endWork)}</p>
                             </div>
                             <div>{calculateWorkHours(d.startWork, d.endWork)}</div>
                             
