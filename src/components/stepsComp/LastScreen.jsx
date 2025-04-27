@@ -5,7 +5,7 @@ import { calculateWorkHours } from '../calculate/calculateWorkHours';
 import { motion } from 'framer-motion';
 
 import apiService from "../../services/apiService.js";
-import {convertToISODate} from '../calculate/convertToISODate.js';
+// import {convertToISODate} from '../calculate/convertToISODate.js';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -26,27 +26,30 @@ const LastScreen = () => {
         return `${time} שעות`;   
     } 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
-        let a;
         try {
             e.preventDefault();
             const workDay = JSON.stringify({
                 date: '',
-                startWork: convertToISODate(startWork),
-                endWork: convertToISODate(endWork),
+                startWork,
+                endWork,
                 comment
             })
-            a = workDay;
-            // console.log(workDay);
-            apiService.addWorkDay(workDay);
+            await apiService.addWorkDay(workDay);
             
             navigate('/my-board')
         } catch (err) {
-            console.log(a);
             console.log("the error",err.message);
         }
     }
+
+    const formatTimeToInput = (dateObj) => {
+        if (!dateObj) return "";
+        const hours = String(dateObj.getHours()).padStart(2, "0");
+        const minutes = String(dateObj.getMinutes()).padStart(2, "0");
+        return `${hours}:${minutes}`;
+        };
 
     return (
         <div className="lastScreen-container">
@@ -70,7 +73,31 @@ const LastScreen = () => {
                                 <th>שעת סיום</th>
                             </tr>
                             <tr>
-                                <th><input
+                                <th>
+                                    <input
+                                        type="time"
+                                        value={formatTimeToInput(startWork)}
+                                        onChange={(e) => {
+                                            const [hours, minutes] = e.target.value.split(":").map(Number);
+                                            const updated = new Date(startWork);
+                                            updated.setHours(hours, minutes, 0, 0);
+                                            setStartWork(updated);
+                                        }}
+/>
+                                </th>
+                                <th>
+                                    <input
+                                        type="time"
+                                        value={formatTimeToInput(endWork)}
+                                        onChange={(e) => {
+                                            const [hours, minutes] = e.target.value.split(":").map(Number);
+                                            const updated = new Date(startWork);
+                                            updated.setHours(hours, minutes, 0, 0);
+                                            setEndWork(updated);
+                                        }}
+                                        />
+                                </th>
+                                {/* <th><input
                                     type="time"
                                     value={startWork}
                                     onChange={(e) => setStartWork(e.target.value)}
@@ -79,7 +106,7 @@ const LastScreen = () => {
                                     type="time" 
                                     value={endWork}
                                     onChange={(e) => setEndWork(e.target.value)}
-                                /></th>
+                                /></th> */}
                             </tr>
                         </thead>
                     </table>
